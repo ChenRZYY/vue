@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind的基本使用</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{message}}</h2>
+    <!--注意：这里不能使用mustache语法，要用v-bind来绑定 <img src="{{imgURL}}" alt="">  -->
+    <img v-bind:src="imgURL" alt="">
+    <img :src="imgURL" alt="">
+    <a :href="aHref">百度一下</a>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好!",
+      imgURL: "https://cn.vuejs.org/images/logo.png",
+      aHref: "https://www.baidu.com",
+    }
+  })
+</script>
+
+</body>
+</html>

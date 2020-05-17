@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象字面量增强写法</title>
+</head>
+<body>
+
+<script>
+
+  //对象字面量
+  // const obj=new Object()
+  // const obj = {
+  //   name: 'why',
+  //   age: 18,
+  //   run: function () {
+  //     console.log('在奔跑');
+  //   }
+  // }
+
+  //  属性的增强写法
+  const name = 'why'
+  const age = 18
+  const height = 187
+
+  //ES5
+  const obj = {
+    name: name,
+    age: age,
+    height: height,
+  }
+  console.log(obj);
+
+  // ES6:属性的增强写法
+  const obj1 = {
+    name,
+    age,
+    height
+  }
+  console.log(obj1);
+
+
+  //  函数的增强写法
+  //  ES5
+  const obj2 = {
+    run: function () {
+
+    },
+    eat: function () {
+
+    }
+  }
+
+  const obj3 = {
+    run() {
+
+    },
+    eat() {
+
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

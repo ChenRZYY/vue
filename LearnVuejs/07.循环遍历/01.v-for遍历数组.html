@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>v-for遍历数组</title>
+</head>
+<body>
+
+<div id="app">
+  <ul>
+    <!--1.遍历过程中没有使用索引-->
+    <li v-for="item in names">{{item}}</li>
+    <!--2.遍历过程使用索引(下标)-->
+    <li v-for="(item,index) in names">{{index+1}}-{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好!",
+      names: ['why', 'code', 'james', 'curry']
+    }
+  })
+</script>
+
+
+</body>
+</html>

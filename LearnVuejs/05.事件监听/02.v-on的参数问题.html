@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-on的参数问题</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- 事件条用方法:没有参数 -->
+  <button @click="btnClick()">按钮1</button>
+  <button @click="btnClick">按钮1</button>
+  <br/>
+  <!--在事件定义时候,写函数时省略了(),但是方法本身需要传一个参数,会是undefined,没有()会打印MouseEvent(浏览器默认生成的event)-->
+  <button @click="btn2Click(123)">按钮2</button>
+  <button @click="btn2Click()">按钮2undefined</button>
+  <button @click="btn2Click">按钮2(默认打印event对象)</button>
+  <br/>
+  <!-- 需要event对象,又需要其它对象 -->
+  <!-- 在调用方法时,$event可以手动的获取浏览器产生的event对象 -->
+  <button @click="btn3Click(123,$event)">按钮3</button>
+  <br/>
+  <button>按钮4</button>
+  <button>按钮5</button>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好!"
+    },
+    methods: {
+      btnClick() {
+        console.log("btnClick");
+      },
+      btn2Click(abc) {
+        console.log('-----', abc);
+      },
+      btn3Click(abc, event) {
+        console.log('+++++++', abc, event)
+      }
+    }
+  })
+</script>
+
+
+</body>
+</html>

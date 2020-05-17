@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind动态绑定style属性（对象语法）</title>
+</head>
+<body>
+<div id="app">
+    <!--    <h2 :style="{key(属性名):value(属性值)}">{{message}}</h2>  -->
+    <h2 :style="{fontSize:'50px'}">{{message}} 50px必须加''</h2>
+    <h2 :style="{backgroundColor:color}">{{message}} 直接引用变量 </h2>
+    <h2 :style="getStyles()">{{message}} 抽离成函数 </h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好!",
+      color: 'red',
+    },
+    methods: {
+      getStyles() {
+        return {color: this.color}
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

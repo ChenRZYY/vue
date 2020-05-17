@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-on的修饰符</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- 1.stop:阻止冒泡-->
+  <div @click="divClick">
+    stop阻止冒泡
+    <button @click.stop="btnClick">按钮</button>
+  </div>
+  <br/>
+  <!-- 2.prevent:阻止默认事件  -->
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="submmitClick">
+  </form>
+  <br/>
+  <!-- 3.监听键盘键帽的点击 -->
+  <input type="text" @keyup.enter="keyUp">
+  <br/>
+  <!--4.once:只出发一次-->
+  <button @click.once="btnOnceClick">只点击一次</button>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好!"
+    },
+    methods: {
+      divClick() {
+        console.log('divClick');
+      },
+      btnClick() {
+        console.log('btnClick');
+      },
+      submmitClick() {
+        console.log('submmitClick');
+      },
+      keyUp() {
+        console.log('keyUp');
+      },
+      btnOnceClick() {
+        console.log('btnOnceClick');
+      }
+    }
+  })
+</script>
+
+
+</body>
+</html>

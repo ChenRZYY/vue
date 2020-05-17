@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>哪些数组的方法是响应式的</title>
+</head>
+<body>
+
+
+<div id="app">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      letters: ["A", "B", "C", "D", "E"]
+    },
+    methods: {
+      btnClick() {
+        /*1.push在最后面添加元素---响应式*/
+        // this.letters.push('aaa')
+        // this.letters.push('aaa','bbbb','ccccc)
+
+        /*2.pop从最后删除---响应式*/
+        // this.letters.pop()
+
+        /*3.shift删除数组中的第一个元素---响应式*/
+        // this.letters.shift()
+
+        /*4.unshift咋最前面添加元素()---响应式*/
+        // this.letters.unshift('aaaa')
+        // this.letters.unshift('aaaa', 'bbbbbb', 'cccc')
+
+
+        /*5.splice(start,):删除、插入、替换元素(第二个参数非常重要)---响应式*/
+        // this.letters.splice()  /*删除所有*/
+        // this.letters.splice(2, 1)  /*从第二个位置开始删除一个*/
+        // this.letters.splice(1, 3, 'l', 'l', 'l')  /*从第一个位置开始，替换3个元素*/
+        // this.letters.splice(1, 0, 'x', 'y', 'z')   /*从第一个位置开始，插入三个元素*/
+
+        /*6.sort排序---响应式*/
+        // this.letters.sort()
+        /*7.reverse反转---响应式*/
+        // this.letters.reverse()
+
+
+        /*通过索引值，修改push中的元素----非响应式*/
+        // this.letters[0] = 'bbbbb'
+        // this.letters.splice(0, 1, 'bbbbb')  /*响应式*/
+        Vue.set(this.letters, 0, 'bbbbb')  /*响应式(要修改的对象,索引值,修改后的值)*/
+
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
