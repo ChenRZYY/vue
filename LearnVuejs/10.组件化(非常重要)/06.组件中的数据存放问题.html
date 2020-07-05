@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件模版的分离写法</title>
+</head>
+<body>
+
+
+<!-- 1.分离写法：script标签(注意type类型) -->
+<script type="text/x-template" id="cpn">
+  <div>
+    <h2>我是标题script</h2>
+    <p>我是内容</p>
+    <h2>{{title}}</h2>
+  </div>
+</script>
+
+
+<!-- 2.分离写法：template标签 -->
+<template id="cpn2">
+  <div>
+    <h2>我是标题template</h2>
+    <p>我是内容</p>
+  </div>
+</template>
+
+
+
+<div id="app">
+  <cpn></cpn>
+  <cpn2></cpn2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  <!-- 模版分离  -->
+  Vue.component('cpn', {
+    template: '#cpn',
+    //data必须是一个函数，且要有返回值
+    data(){
+      return {
+        title:'ABC',
+      }
+    }
+  })
+  Vue.component('cpn2', {
+    template: '#cpn2'
+  })
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello xiaofxia!"
+    }
+  })
+</script>
+</body>
+</html>
